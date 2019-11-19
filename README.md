@@ -32,30 +32,41 @@ from scipy.stats import kurtosis, skew
 
 
 ```python
-x_random = None
+# generate random normal variable with 10,000 values, mean = 0 and SD=2
+x_random = np.random.normal(loc=0, scale=2, size=10000)
+
+# plot histogram set bins to auto
+plt.hist(x_random, bins='auto')
+
+# calc skewness and kurtosis with scipy
+s = skew(x_random)
+k = kurtosis(x_random)
+print ('Skewness =', s)
+print ('kurtosis =', k)
 
 # Skewness = -0.0025781248189666343
 # kurtosis = 0.03976806960642154
 
 ```
 
-    Skewness = -0.01442829768952485
-    kurtosis = 0.016922288438713018
+    Skewness = 0.01747293159078567
+    kurtosis = 0.022109742529356602
 
 
 
-![png](index_files/index_3_1.png)
+![png](output_3_1.png)
 
 
-
-```python
-# Your observations here 
+### Your observations here 
 
 
-#
-#
-#
-```
+* Data is normally distributed and symmetrical 
+
+* A very slight positive skewness is observed as there are slightly more values on the left side of distribution mean than those on left side
+
+
+* The kurtosis value shows that this distribution is Platykurtic ( kurtosis<3 ):
+    When a distribution is platykurtic, the distribution is shorter and tails are thinner than the normal distribution. The peak is lower and broader than Mesokurtic, which means that the tails are light and that there are fewer outliers than in a normal distribution.
 
 ## Take 2
 
@@ -73,7 +84,14 @@ y = 1./(np.sqrt(2.*np.pi)) * np.exp( -.5*(x)**2  )  # normal distribution
 
 
 ```python
+# plot histogram for y, set bins to auto
+plt.hist(y, bins='auto', color='r')
 
+# calc skewness and kurtosis with scipy
+s = skew(y)
+k = kurtosis(y)
+print ('Skewness =', s)
+print ('kurtosis =', k)
 
 # Skewness = 1.109511549276228
 # kurtosis = -0.31039027765889804
@@ -84,17 +102,16 @@ y = 1./(np.sqrt(2.*np.pi)) * np.exp( -.5*(x)**2  )  # normal distribution
 
 
 
-![png](index_files/index_8_1.png)
+![png](output_8_1.png)
 
 
+#### Your observations here 
+* high positive skewness : more values on left side of distribution mean than those on the right
 
-```python
-# Your observations here 
+* platykurtic: negative kurtosis value indicates thinner tails and flatter peak than the normal distribution.
 
-#
-#
-#
-```
+* distribution is obviously not normal.
+
 
 ## Summary
 
